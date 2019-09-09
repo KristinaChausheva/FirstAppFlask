@@ -1,14 +1,25 @@
-from flask import Flask,  render_template
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+   <meta charset="utf-8">
+   <title>Flask Parent Template</title>
+   <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+ </head>
+ <body>
+    <header>
+      <div class="container">
+        <h1 class="logo">Jetbraining</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
 
-app = Flask(__name__)
+    {% block content %}
+    {% endblock %}
 
-@app.route('/')
-def home():
-    return render_template("flask_try.html")
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-if __name__ == '__main__':
-    app.run()
+ </body>
+</html>
